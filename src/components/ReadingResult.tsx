@@ -114,58 +114,64 @@ export const ReadingResult: React.FC<ReadingResultProps> = ({
           </div>
 
           <div className="relative z-10 mx-auto max-w-3xl">
-            <p className="font-display text-sm font-bold tracking-[0.3em] text-slate-400 uppercase">
-              ASTRA • WESTERN ASTROLOGY
-            </p>
-
-            <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl">
-              YOUR COSMIC STORY
-            </h1>
-
             {/* Huge Zodiac Glyph */}
-            <div className="my-8 flex justify-center">
+            <div className="my-6 flex justify-center">
               <div
-                className="flex h-28 w-28 items-center justify-center rounded-3xl border border-white/15 bg-black/40 text-7xl shadow-2xl transition-transform duration-500 hover:scale-110 sm:h-36 sm:w-36 sm:text-8xl"
+                className="flex h-32 w-32 items-center justify-center rounded-3xl border border-white/20 bg-black/50 text-8xl shadow-2xl transition-transform duration-700 hover:scale-110 sm:h-40 sm:w-40 sm:text-9xl"
                 style={{
-                  boxShadow: `0 0 45px -5px ${sunInfo.theme.primaryColor}50`,
+                  boxShadow: `0 0 55px -5px ${sunInfo.theme.primaryColor}70`,
                 }}
               >
-                <span style={{ color: sunInfo.theme.primaryColor }}>
+                <span
+                  style={{
+                    color: sunInfo.theme.primaryColor,
+                    textShadow: `0 0 30px ${sunInfo.theme.primaryColor}aa`,
+                  }}
+                >
                   {sunInfo.glyph}
                 </span>
               </div>
             </div>
 
-            {/* Large Sign Title & Dates */}
-            <h2 className="font-display text-3xl font-bold tracking-[0.15em] text-white sm:text-5xl">
+            {/* Sign Title & Dates */}
+            <h1 className="font-display text-4xl font-black tracking-[0.2em] text-white sm:text-6xl md:text-7xl">
               {sunInfo.name.toUpperCase()}
-            </h2>
-            <p className="mt-2 text-sm font-semibold tracking-widest text-slate-300">
+            </h1>
+            <p className="mt-2 text-sm font-semibold tracking-widest text-slate-300 sm:text-base">
               {sunInfo.dateRange}
             </p>
 
-            {/* Badges */}
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
-              <span
-                className={`rounded-full border px-3 py-1 text-xs font-semibold tracking-wider uppercase ${sunInfo.theme.badgeBg}`}
-              >
-                {sunInfo.element} Sign
-              </span>
-              <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold tracking-wider text-slate-300 uppercase">
-                {sunInfo.modality}
-              </span>
-              <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold tracking-wider text-slate-300 uppercase">
-                Ruler: {sunInfo.rulingPlanet}
-              </span>
-              <span className="rounded-full border border-amber-400/30 bg-amber-500/10 px-3 py-1 text-xs font-semibold tracking-wider text-amber-300 uppercase">
-                Sun in {sunInfo.name} ({sunDegree}°)
+            {/* Archetype Title */}
+            <div className="my-6">
+              <span className="inline-block rounded-full border border-amber-400/40 bg-amber-500/10 px-5 py-2 font-display text-sm font-black tracking-[0.25em] text-amber-200 uppercase sm:text-base shadow-[0_0_20px_rgba(251,191,36,0.15)]">
+                {sunSign === 'scorpio' ? 'THE INTENSE OBSERVER' : sunInfo.tagline.toUpperCase()}
               </span>
             </div>
 
-            {/* Tagline */}
-            <p className="mt-6 font-serif text-xl italic text-slate-200 sm:text-2xl">
-              &ldquo;{sunInfo.tagline}&rdquo;
+            {/* Short Personalized Introduction */}
+            <p className="mx-auto max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg">
+              {birthDetails.name
+                ? `${birthDetails.name}, your chart reflects the deep architectural blueprint of ${sunInfo.name}. You bring ${sunInfo.tagline.toLowerCase()}, navigating the world through an instinctive blend of insight and purpose.`
+                : `Your chart reflects the deep architectural blueprint of ${sunInfo.name}. You bring ${sunInfo.tagline.toLowerCase()}, navigating the world through an instinctive blend of insight and purpose.`}
             </p>
+
+            {/* Placements Badges */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+              <span
+                className={`rounded-full border px-3.5 py-1 text-xs font-bold tracking-wider uppercase ${sunInfo.theme.badgeBg}`}
+              >
+                {sunInfo.element} Sign
+              </span>
+              <span className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1 text-xs font-semibold tracking-wider text-slate-300 uppercase">
+                {sunInfo.modality}
+              </span>
+              <span className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1 text-xs font-semibold tracking-wider text-slate-300 uppercase">
+                Ruler: {sunInfo.rulingPlanet}
+              </span>
+              <span className="rounded-full border border-amber-400/30 bg-amber-500/15 px-3.5 py-1 text-xs font-bold tracking-wider text-amber-300 uppercase">
+                Sun in {sunInfo.name} ({sunDegree}°)
+              </span>
+            </div>
           </div>
         </div>
 
@@ -645,7 +651,7 @@ export const ReadingResult: React.FC<ReadingResultProps> = ({
           </div>
         </section>
 
-        {/* SECTION 18: CHECK COMPATIBILITY */}
+        {/* SECTION 18: YOU × THEM */}
         <section id="compatibility-section" className="mb-16">
           <div className="mb-6 flex items-center gap-3">
             <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-orange-500 font-bold text-white">
@@ -653,15 +659,15 @@ export const ReadingResult: React.FC<ReadingResultProps> = ({
             </span>
             <div>
               <span className="text-xs font-semibold tracking-widest text-slate-400 uppercase">
-                Elemental Chemistry
+                Synastry Chemistry
               </span>
-              <h3 className="font-display text-2xl font-bold text-white sm:text-3xl">
-                CHECK COMPATIBILITY
+              <h3 className="font-display text-2xl font-black text-white sm:text-3xl tracking-tight">
+                YOU × THEM
               </h3>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/15 bg-[#0a0d1a]/85 p-6 backdrop-blur-xl sm:p-10">
+          <div className="rounded-3xl border border-white/15 bg-[#0a0d1a]/85 p-6 backdrop-blur-xl sm:p-10 shadow-2xl">
             <div className="flex flex-col items-center justify-between gap-6 border-b border-white/10 pb-8 md:flex-row">
               {/* Partner Sign Selector */}
               <div className="flex items-center gap-3 sm:gap-6">
@@ -672,14 +678,14 @@ export const ReadingResult: React.FC<ReadingResultProps> = ({
                   </p>
                 </div>
 
-                <span className="font-display text-2xl text-slate-500">×</span>
+                <span className="font-display text-2xl text-amber-400 font-bold">×</span>
 
                 <div className="flex flex-col items-center">
                   <select
                     id="partner-sign-select"
                     value={partnerSignKey}
                     onChange={(e) => setPartnerSignKey(e.target.value as ZodiacSignKey)}
-                    className="rounded-2xl border border-white/20 bg-[#12162c] px-4 py-2.5 font-display text-base font-bold text-amber-300 focus:border-amber-400 focus:outline-none"
+                    className="rounded-2xl border border-white/20 bg-[#12162c] px-4 py-2.5 font-display text-base font-bold text-amber-300 focus:border-amber-400 focus:outline-none cursor-pointer"
                   >
                     {Object.values(ZODIAC_DATA).map((s) => (
                       <option key={s.key} value={s.key}>
@@ -696,19 +702,19 @@ export const ReadingResult: React.FC<ReadingResultProps> = ({
                 <span className="text-[10px] font-semibold tracking-wider text-slate-400 uppercase">
                   Dynamic Harmony
                 </span>
-                <span className="mt-1 rounded-full border border-amber-400/40 bg-amber-500/15 px-4 py-1.5 text-xs font-bold text-amber-200">
+                <span className="mt-1 rounded-full border border-amber-400/40 bg-amber-500/15 px-4 py-1.5 text-xs font-bold text-amber-200 shadow-[0_0_15px_rgba(251,191,36,0.2)]">
                   {compatibility.harmonyLevel}
                 </span>
               </div>
             </div>
 
             <div className="mt-8">
-              <h4 className="font-serif text-lg font-semibold text-white">
-                {compatibility.vibeTitle}
+              <h4 className="font-display text-xl font-bold text-white">
+                {sunInfo.glyph} {sunInfo.name.toUpperCase()} × {ZODIAC_DATA[partnerSignKey].glyph} {ZODIAC_DATA[partnerSignKey].name.toUpperCase()}: {compatibility.vibeTitle}
               </h4>
 
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+                <div className="rounded-2xl border border-rose-500/20 bg-[#150a16] p-4">
                   <span className="flex items-center gap-1.5 text-xs font-bold tracking-wider text-rose-300 uppercase">
                     <Heart className="h-3.5 w-3.5" /> ❤️ Love
                   </span>
@@ -717,7 +723,7 @@ export const ReadingResult: React.FC<ReadingResultProps> = ({
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+                <div className="rounded-2xl border border-sky-500/20 bg-[#091122] p-4">
                   <span className="flex items-center gap-1.5 text-xs font-bold tracking-wider text-sky-300 uppercase">
                     <MessageCircle className="h-3.5 w-3.5" /> 💬 Communication
                   </span>
@@ -726,7 +732,7 @@ export const ReadingResult: React.FC<ReadingResultProps> = ({
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+                <div className="rounded-2xl border border-amber-500/20 bg-[#17120a] p-4">
                   <span className="flex items-center gap-1.5 text-xs font-bold tracking-wider text-amber-300 uppercase">
                     <Flame className="h-3.5 w-3.5" /> 🔥 Chemistry
                   </span>
@@ -735,12 +741,39 @@ export const ReadingResult: React.FC<ReadingResultProps> = ({
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4">
+                <div className="rounded-2xl border border-purple-500/20 bg-[#120a22] p-4">
                   <span className="flex items-center gap-1.5 text-xs font-bold tracking-wider text-purple-300 uppercase">
                     <Zap className="h-3.5 w-3.5" /> ⚡ Challenges
                   </span>
                   <p className="mt-2 text-xs leading-relaxed text-slate-300">
                     {compatibility.challenges}
+                  </p>
+                </div>
+              </div>
+
+              {/* WHY IT WORKS and WHERE IT GETS DIFFICULT */}
+              <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-5">
+                  <div className="flex items-center gap-2 text-emerald-400">
+                    <span className="flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]" />
+                    <h5 className="font-display text-xs font-black tracking-widest uppercase">
+                      WHY IT WORKS
+                    </h5>
+                  </div>
+                  <p className="mt-2.5 text-xs leading-relaxed text-slate-300">
+                    {compatibility.whyItWorks}
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-amber-500/30 bg-amber-950/20 p-5">
+                  <div className="flex items-center gap-2 text-amber-400">
+                    <span className="flex h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_8px_#f59e0b]" />
+                    <h5 className="font-display text-xs font-black tracking-widest uppercase">
+                      WHERE IT GETS DIFFICULT
+                    </h5>
+                  </div>
+                  <p className="mt-2.5 text-xs leading-relaxed text-slate-300">
+                    {compatibility.whereItGetsDifficult}
                   </p>
                 </div>
               </div>

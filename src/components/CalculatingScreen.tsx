@@ -7,10 +7,9 @@ interface CalculatingScreenProps {
 }
 
 const STAGES = [
-  'READING YOUR STARS...',
-  'CALCULATING YOUR ZODIAC...',
-  'LOOKING AT YOUR BIRTH PATTERN...',
-  'YOUR READING IS READY',
+  'READING YOUR STARS',
+  'MAPPING YOUR BIRTH SKY',
+  'YOUR STORY IS READY',
 ];
 
 const GLYPHS = ['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'];
@@ -29,17 +28,15 @@ export const CalculatingScreen: React.FC<CalculatingScreenProps> = ({
     }, 140);
 
     // Cycle through stages
-    const timer1 = setTimeout(() => setStageIndex(1), 750);
-    const timer2 = setTimeout(() => setStageIndex(2), 1550);
-    const timer3 = setTimeout(() => setStageIndex(3), 2350);
-    const timer4 = setTimeout(() => onComplete(), 3000);
+    const timer1 = setTimeout(() => setStageIndex(1), 800);
+    const timer2 = setTimeout(() => setStageIndex(2), 1600);
+    const timer3 = setTimeout(() => onComplete(), 2400);
 
     return () => {
       clearInterval(glyphInterval);
       clearTimeout(timer1);
       clearTimeout(timer2);
       clearTimeout(timer3);
-      clearTimeout(timer4);
     };
   }, [onComplete]);
 

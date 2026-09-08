@@ -53,12 +53,12 @@ export const DisclaimerFooter: React.FC<DisclaimerFooterProps> = ({
         </div>
 
         {/* Legal Disclaimer Mandate */}
-        <div className="mt-8 border-t border-white/[0.06] pt-6 text-center text-xs leading-relaxed text-slate-400">
-          <p>
-            &ldquo;Astrology is a tool for self-reflection and entertainment. Readings should not replace professional, medical, legal or financial advice.&rdquo;
+        <div className="mt-8 border-t border-white/[0.06] pt-6 text-center text-xs leading-relaxed text-slate-500">
+          <p className="max-w-2xl mx-auto">
+            ASTRA provides astrology-based interpretations for reflection and entertainment. Astrology is not scientifically established as a method for predicting future events or determining personality.
           </p>
-          <p className="mt-2 text-[11px] text-slate-400">
-            &copy; {new Date().getFullYear()} ASTRA. Accurate Western Tropical Calculations based on Jean Meeus Astronomical Algorithms.
+          <p className="mt-2 text-[11px] text-slate-600">
+            &copy; {new Date().getFullYear()} ASTRA • Authentic Western Astrology
           </p>
         </div>
       </div>

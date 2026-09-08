@@ -477,38 +477,52 @@ export const BirthDetailsModal: React.FC<BirthDetailsModalProps> = ({
                     Example format: <span className="font-semibold text-white">07 : 35 PM</span>
                   </p>
 
-                  {/* Skip Button */}
-                  <div className="pt-2 text-center">
+                  {/* Skip Birth Time Section */}
+                  <div className="pt-3 text-center">
+                    <p className="mb-2 text-xs text-slate-400">
+                      Don&apos;t know your exact birth time?
+                    </p>
                     <button
                       type="button"
                       id="skip-birth-time-btn"
-                      onClick={() => setBirthTimeKnown(false)}
-                      className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold tracking-wider text-slate-300 uppercase hover:border-white/25 hover:text-white"
+                      onClick={() => {
+                        setBirthTimeKnown(false);
+                        setCurrentStep(4);
+                      }}
+                      className="rounded-full border border-amber-400/30 bg-amber-500/10 px-5 py-2.5 text-xs font-bold tracking-widest text-amber-200 uppercase transition-all hover:border-amber-400 hover:bg-amber-500/20"
                     >
-                      I Don&apos;t Know My Birth Time
+                      SKIP BIRTH TIME
                     </button>
                   </div>
                 </div>
               ) : (
-                <div className="space-y-4 rounded-2xl border border-amber-500/20 bg-amber-950/20 p-5 text-center">
+                <div className="space-y-4 rounded-2xl border border-amber-500/20 bg-amber-950/20 p-6 text-center">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber-500/20 text-amber-300">
                     <HelpCircle className="h-5 w-5" />
                   </div>
                   <h4 className="font-display text-base font-semibold text-amber-200">
-                    Don&apos;t know your exact birth time? No problem.
+                    Birth time skipped
                   </h4>
                   <p className="text-xs leading-relaxed text-slate-300">
-                    &ldquo;You can continue without it. Some parts of a birth chart, such as your Rising Sign,
-                    depend on the exact birth time, so we won&apos;t guess them.&rdquo;
+                    &ldquo;That&apos;s completely fine. We&apos;ll use the information we can calculate reliably and won&apos;t guess the rest.&rdquo;
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => setBirthTimeKnown(true)}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-400 underline underline-offset-4 hover:text-amber-300"
-                  >
-                    <Clock className="h-3.5 w-3.5" />
-                    I remember my birth time
-                  </button>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setBirthTimeKnown(true)}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 underline underline-offset-4 hover:text-white"
+                    >
+                      <Clock className="h-3.5 w-3.5" />
+                      I remember my birth time
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCurrentStep(4)}
+                      className="rounded-full bg-amber-500 px-5 py-2 text-xs font-bold tracking-wider text-black uppercase hover:bg-amber-400"
+                    >
+                      Continue to Birthplace →
+                    </button>
+                  </div>
                 </div>
               )}
             </div>

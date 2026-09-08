@@ -21,12 +21,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks: {
     key: 'home' | 'zodiac' | 'compatibility' | 'today';
     label: string;
-    mobileLabel?: string;
   }[] = [
     { key: 'home', label: 'Home' },
     { key: 'zodiac', label: 'Zodiac' },
     { key: 'compatibility', label: 'Compatibility' },
-    { key: 'today', label: "Today's Horoscope", mobileLabel: 'Today' },
+    { key: 'today', label: 'Today' },
   ];
 
   const handleNavClick = (key: 'home' | 'zodiac' | 'compatibility' | 'today') => {
@@ -163,7 +162,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       : 'text-slate-300 hover:bg-white/5 hover:text-white'
                   }`}
                 >
-                  <span>{link.mobileLabel || link.label}</span>
+                  <span>{link.label}</span>
                   {link.key === 'home' && <Compass className="h-4 w-4 text-slate-500" />}
                   {link.key === 'zodiac' && <Star className="h-4 w-4 text-slate-500" />}
                   {link.key === 'compatibility' && <HeartHandshake className="h-4 w-4 text-slate-500" />}

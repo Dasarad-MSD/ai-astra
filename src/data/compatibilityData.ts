@@ -117,16 +117,27 @@ export function getCompatibility(sign1Key: ZodiacSignKey, sign2Key: ZodiacSignKe
   let customChem = rel.chemTheme;
   let customChal = rel.chalTheme;
 
+  let whyItWorks = '';
+  let whereItGetsDifficult = '';
+
   if (sign1Key === sign2Key) {
     customLove = `As two ${sign1.name}s, you share an instinctive rhythm. Both of you crave the same emotional atmosphere (${sign1.element.toLowerCase()} expression), making understanding immediate and effortless.`;
     customComm = `You communicate with seamless shorthand. When you are aligned, projects and adventures take off with double momentum.`;
     customChem = `Intense familiarity. You admire each other’s strengths because you recognize your own values reflected right back at you.`;
     customChal = `When conflicts arise, both of you lean into the same defense mechanism: ${sign1.challenges[0].title.toLowerCase()}. Learning to be the first one to yield is essential.`;
+    whyItWorks = `You never have to justify who you are. The fundamental motivations that drive ${sign1.name}—${sign1.personality.essence.slice(0, 110).trim()}...—are naturally honored and shared. You build a private sanctuary where both partners understand each other without endless explanation.`;
+    whereItGetsDifficult = `Because you share the exact same blind spots, nobody naturally compensates for the other’s stress reactions. When stubbornness, retreat, or impulsivity strikes, neither is inclined to step into the adult mediator role unless you deliberately establish conscious communication agreements.`;
   } else {
     customLove = `${sign1.name} brings ${sign1.tagline.toLowerCase()}, while ${sign2.name} offers ${sign2.tagline.toLowerCase()}. ${rel.loveTheme}`;
     customComm = `${sign1.name}’s natural style (${sign1.shortDescription.toLowerCase()}) meets ${sign2.name}’s approach (${sign2.shortDescription.toLowerCase()}). ${rel.commTheme}`;
     customChem = `Between ${sign1.name} (${sign1.element}) and ${sign2.name} (${sign2.element}), ${rel.chemTheme}`;
     customChal = `${sign1.name} may struggle with ${sign2.name}’s ${sign2.challenges[0].title.toLowerCase()}, while ${sign2.name} can feel tested by ${sign1.name}’s ${sign1.challenges[0].title.toLowerCase()}. ${rel.chalTheme}`;
+    
+    // Realistic psychological why it works
+    whyItWorks = `${sign1.name}’s natural strength in ${sign1.strengths[0]?.title.toLowerCase() || 'initiative'} provides a supportive foundation that helps ${sign2.name} feel recognized. In turn, ${sign2.name} introduces ${sign2.strengths[0]?.title.toLowerCase() || 'perspective'}, softening ${sign1.name}’s habitual blind spots. The polarity creates mutual fascination rather than competition.`;
+    
+    // Realistic psychological where it gets difficult
+    whereItGetsDifficult = `Tension typically arises around emotional pacing and defensive reflexes. ${sign1.name} tends toward ${sign1.challenges[0]?.title.toLowerCase() || 'impatience'}, whereas ${sign2.name} responds through ${sign2.challenges[0]?.title.toLowerCase() || 'defensiveness'}. When tired or overwhelmed, both risk misinterpreting the other's natural coping mechanism as personal disregard.`;
   }
 
   return {
@@ -137,6 +148,8 @@ export function getCompatibility(sign1Key: ZodiacSignKey, sign2Key: ZodiacSignKe
     communication: customComm,
     chemistry: customChem,
     challenges: customChal,
+    whyItWorks,
+    whereItGetsDifficult,
     harmonyLevel: rel.harmony,
   };
 }

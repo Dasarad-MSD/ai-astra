@@ -132,6 +132,7 @@ export default function App() {
                   setActiveView('zodiac');
                 }
               }}
+              onSelectSign={(key) => setInspectedSign(ZODIAC_DATA[key])}
             />
 
             <ZodiacGrid

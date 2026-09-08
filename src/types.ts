@@ -154,5 +154,7 @@ export interface CompatibilityReport {
   communication: string;
   chemistry: string;
   challenges: string;
+  whyItWorks: string;
+  whereItGetsDifficult: string;
   harmonyLevel: 'Harmonious' | 'Magnetic & Dynamic' | 'Complementary Growth' | 'Intense & Transformative';
 }

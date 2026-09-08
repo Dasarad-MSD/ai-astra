@@ -1,113 +1,144 @@
 import React from 'react';
-import { Sparkles, ArrowRight, ShieldCheck, Star } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
+import cosmicBg from '../assets/images/cosmic_nebula_bg_1788860503018.jpg';
+import astrolabeImg from '../assets/images/zodiac_astrolabe_1788860528010.jpg';
+import { ZodiacSignKey } from '../types';
 
 interface HeroSectionProps {
   onDiscoverClick: () => void;
   onExploreSignsClick: () => void;
+  onSelectSign?: (key: ZodiacSignKey) => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onDiscoverClick,
   onExploreSignsClick,
+  onSelectSign,
 }) => {
+  const ZODIAC_GLYPHS: { glyph: string; name: string; key: ZodiacSignKey }[] = [
+    { glyph: '♈', name: 'Aries', key: 'aries' },
+    { glyph: '♉', name: 'Taurus', key: 'taurus' },
+    { glyph: '♊', name: 'Gemini', key: 'gemini' },
+    { glyph: '♋', name: 'Cancer', key: 'cancer' },
+    { glyph: '♌', name: 'Leo', key: 'leo' },
+    { glyph: '♍', name: 'Virgo', key: 'virgo' },
+    { glyph: '♎', name: 'Libra', key: 'libra' },
+    { glyph: '♏', name: 'Scorpio', key: 'scorpio' },
+    { glyph: '♐', name: 'Sagittarius', key: 'sagittarius' },
+    { glyph: '♑', name: 'Capricorn', key: 'capricorn' },
+    { glyph: '♒', name: 'Aquarius', key: 'aquarius' },
+    { glyph: '♓', name: 'Pisces', key: 'pisces' },
+  ];
+
   return (
     <section
       id="hero-section"
-      className="relative flex min-h-[calc(100vh-5rem)] w-full items-center justify-center overflow-hidden px-6 py-16 lg:px-12"
+      className="relative flex min-h-[92vh] w-full items-center justify-center overflow-hidden px-6 py-20 lg:px-12"
     >
-      {/* Background Celestial Radial Glows */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
-        {/* Central Core Ambient Pulsing Nebula */}
-        <div className="h-[500px] w-[500px] rounded-full bg-gradient-to-tr from-purple-600/20 via-blue-600/20 to-amber-400/10 blur-[120px] transition-all duration-1000 md:h-[650px] md:w-[650px]" />
-        {/* Soft Secondary Glowing Rim */}
-        <div className="absolute top-1/4 -right-20 h-96 w-96 rounded-full bg-rose-600/15 blur-[100px]" />
-        <div className="absolute bottom-1/4 -left-20 h-96 w-96 rounded-full bg-teal-500/15 blur-[100px]" />
+      {/* Cinematic Deep Space Background with Parallax Depth */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        {/* Real Cosmic Nebula Photography Layer */}
+        <img
+          src={cosmicBg}
+          alt="Cosmic Deep Space Nebula"
+          className="h-full w-full object-cover object-center opacity-35 filter saturate-[1.3] contrast-[1.1] scale-105"
+        />
 
-        {/* Elegant Celestial Orbit Rings */}
-        <div className="absolute h-[680px] w-[680px] rounded-full border border-white/[0.05] md:h-[850px] md:w-[850px]" />
-        <div className="absolute h-[520px] w-[520px] rounded-full border border-white/[0.04] stroke-dasharray md:h-[650px] md:w-[650px]" />
-        <div className="absolute h-[340px] w-[340px] rounded-full border border-amber-400/[0.08]" />
+        {/* Sophisticated Multi-Color Atmospheric Washes */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#05060d]/80 via-[#070915]/60 to-[#05060d]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(88,28,135,0.22)_0%,rgba(13,148,136,0.12)_45%,transparent_75%)]" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-gradient-to-tr from-violet-600/25 via-fuchsia-600/15 to-amber-400/15 blur-[140px]" />
+
+        {/* Rotating Translucent Celestial Astrolabe Sphere */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20 mix-blend-screen pointer-events-none">
+          <img
+            src={astrolabeImg}
+            alt="Zodiac Astrolabe Sphere"
+            className="h-[620px] w-[620px] max-w-none rounded-full animate-[spin_160s_linear_infinite]"
+          />
+        </div>
+
+        {/* Delicate Golden Orbit Rings */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[720px] w-[720px] rounded-full border border-amber-400/10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[520px] w-[520px] rounded-full border border-violet-400/10 border-dashed" />
       </div>
 
       {/* Hero Content Container */}
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
-        {/* Brand Tagline Badge */}
-        <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-1.5 backdrop-blur-md">
-          <span className="flex h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_8px_#f59e0b]" />
-          <span className="text-[11px] font-semibold tracking-[0.25em] text-amber-200 uppercase">
-            Your Story, Written in the Stars
+        {/* Small Brand Header */}
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-gradient-to-r from-amber-500/10 via-purple-500/10 to-teal-500/10 px-5 py-2 backdrop-blur-xl shadow-[0_0_20px_rgba(251,191,36,0.12)]">
+          <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#f59e0b]" />
+          <span className="font-display text-xs font-bold tracking-[0.35em] text-amber-200 uppercase">
+            ASTRA
           </span>
+          <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse shadow-[0_0_8px_#f59e0b]" />
         </div>
 
         {/* Main Headline */}
-        <h1 className="mb-6 font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl">
-          <span className="block bg-gradient-to-b from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-            DISCOVER
+        <h1 className="mb-6 font-display text-4xl font-black tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.05]">
+          <span className="block bg-gradient-to-b from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+            YOUR STORY
           </span>
-          <span className="block bg-gradient-to-r from-amber-200 via-rose-300 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(244,114,182,0.3)]">
-            YOUR COSMIC STORY
+          <span className="block bg-gradient-to-r from-amber-200 via-rose-200 to-purple-200 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(244,114,182,0.25)]">
+            WRITTEN IN THE STARS.
           </span>
         </h1>
 
         {/* Subtitle */}
-        <p className="mb-4 font-serif text-xl italic text-slate-300 sm:text-2xl md:text-3xl">
-          Your zodiac sign reveals more than you think.
+        <p className="mb-10 max-w-2xl text-lg font-normal leading-relaxed text-slate-300 sm:text-xl md:text-2xl font-sans">
+          Discover what your zodiac sign says about the way you love, think, work and live.
         </p>
 
-        {/* Supporting Text */}
-        <p className="mb-10 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
-          Discover your personality, strengths, challenges, love style and today&apos;s horoscope.
-          Calculated accurately using authentic Western planetary ephemeris.
-        </p>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col items-center gap-4 sm:flex-row">
+        {/* Primary CTA with Glowing Cosmic Aura */}
+        <div className="flex flex-col items-center">
           <button
             id="hero-primary-discover-btn"
             onClick={onDiscoverClick}
-            className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full border border-amber-400/50 bg-gradient-to-r from-amber-500 via-orange-500 to-rose-600 px-9 py-4 text-sm font-bold tracking-[0.2em] text-white uppercase shadow-[0_0_35px_rgba(245,158,11,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(245,158,11,0.6)] active:scale-95"
+            className="group relative flex items-center justify-center gap-3.5 overflow-hidden rounded-full border border-amber-300/60 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 px-10 py-5 text-sm font-bold tracking-[0.25em] text-white uppercase shadow-[0_0_40px_rgba(245,158,11,0.45)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_60px_rgba(245,158,11,0.7)] active:scale-95 cursor-pointer"
           >
-            <Sparkles className="h-4 w-4 text-amber-200 transition-transform duration-300 group-hover:rotate-45" />
-            <span>Discover My Sign</span>
+            {/* Shimmer Flare Effect */}
+            <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-1000 group-hover:translate-x-full" />
+
+            <Sparkles className="h-4 w-4 text-amber-200 transition-transform duration-500 group-hover:rotate-45" />
+            <span className="relative z-10 text-base font-extrabold tracking-[0.2em]">
+              DISCOVER MY SIGN
+            </span>
             <ArrowRight className="h-4 w-4 text-amber-200 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
 
-          <button
-            id="hero-explore-signs-btn"
-            onClick={onExploreSignsClick}
-            className="flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-7 py-4 text-sm font-medium tracking-wider text-slate-300 uppercase backdrop-blur-md transition-all duration-200 hover:border-white/30 hover:bg-white/[0.08] hover:text-white"
-          >
-            <Star className="h-4 w-4 text-amber-300" />
-            <span>Explore 12 Signs</span>
-          </button>
+          {/* Under Button Label */}
+          <p className="mt-4 text-xs font-semibold tracking-[0.22em] text-slate-400 uppercase">
+            Western Astrology • Personalized Reading
+          </p>
         </div>
 
-        {/* Small Trust Markers */}
-        <div className="mt-8 flex items-center gap-3 text-xs tracking-widest text-slate-400 uppercase">
-          <span>Free</span>
-          <span className="h-1 w-1 rounded-full bg-slate-600" />
-          <span>Personal</span>
-          <span className="h-1 w-1 rounded-full bg-slate-600" />
-          <span>Simple</span>
-          <span className="h-1 w-1 rounded-full bg-slate-600" />
-          <span className="inline-flex items-center gap-1 text-slate-400">
-            <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-            Privacy First
-          </span>
-        </div>
-
-        {/* Quick Western Zodiac Glyphs Ribbon */}
-        <div className="mt-14 flex flex-wrap items-center justify-center gap-3 sm:gap-5">
-          {['♈', '♉', '♊', '♋', '♌', '♍', '♎', '♏', '♐', '♑', '♒', '♓'].map(
-            (glyph, i) => (
-              <span
-                key={i}
-                className="text-lg text-slate-500/70 transition-all duration-300 hover:scale-125 hover:text-amber-300 hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.8)] sm:text-xl"
+        {/* 12 Zodiac Signs: Exactly 2 Lines with 6 in a Line */}
+        <div className="mt-12 w-full max-w-4xl px-2">
+          <div className="grid grid-cols-6 gap-2 sm:gap-3.5 md:gap-4">
+            {ZODIAC_GLYPHS.map((item) => (
+              <button
+                key={item.name}
+                id={`hero-sign-btn-${item.key}`}
+                onClick={() => (onSelectSign ? onSelectSign(item.key) : onExploreSignsClick())}
+                title={`Explore ${item.name}`}
+                className="group relative flex flex-col items-center justify-center h-18 sm:h-22 rounded-xl sm:rounded-2xl border border-white/15 bg-black/45 p-1 sm:p-2 backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-400/60 hover:bg-amber-500/15 hover:shadow-[0_0_25px_rgba(251,191,36,0.35)] cursor-pointer"
               >
-                {glyph}
-              </span>
-            )
-          )}
+                {/* Glyph */}
+                <span
+                  className="text-xl sm:text-3xl text-amber-200 transition-all duration-300 group-hover:scale-115 group-hover:text-amber-100"
+                  style={{
+                    textShadow: '0 0 14px rgba(251, 191, 36, 0.45)',
+                  }}
+                >
+                  {item.glyph}
+                </span>
+                {/* Sign Name */}
+                <span className="mt-1 text-[9px] sm:text-xs font-bold tracking-wider text-slate-300 transition-colors duration-200 group-hover:text-amber-200 uppercase truncate max-w-full">
+                  {item.name}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
