@@ -1,0 +1,6 @@
+{
+  "name": "ASTRA - Modern Western Astrology",
+  "description": "Discover your cosmic story with ASTRA: personal Western astrology readings, Sun, Moon & Rising calculations, daily horoscopes, and zodiac compatibility.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
